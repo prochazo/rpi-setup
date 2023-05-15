@@ -42,3 +42,10 @@ cd linux-setup
 ``` 
 sudo apt install lm-sensors
 ```
+# TODO:
+## VoiceGPT https://www.hackster.io/nickbild/voicegpt-f88f8f
+- https://github.com/tatsu-lab/stanford_alpaca
+- https://github.com/cocktailpeanut/dalai
+
+## Air Quality Monitor
+- https://www.hackster.io/david-gherghita/air-quality-monitor-using-raspberry-pi-4-sps30-and-azure-03cb42
