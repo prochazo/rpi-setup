@@ -29,6 +29,8 @@ I don't know if I did it right, but it works.
 The following guide explains how to set up RPi to have one Autohotspot and one wifi dongle that will connect to the network with the internet.
 The guide was derived from [here](https://raspberrypi.stackexchange.com/questions/98753/2-wifi-nics-that-each-only-connect-to-one-different-from-each-other-network/98768#98768) and [here](https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address-on-raspbian-raspberry-pi-os/37921#37921).
 
+TODO: Bohuzel pri setupovani druheho rpi jsem prisel na to ze zrejme zalezi na tom kdy se nastavi static ip addresa v /etc/dhcpcd.conf. Moje pozorovani je takove ze nejdriv tento soubor musi byt bezezmeny pro autohotspot konfigurator. posleze se muze az provest zmena a nastvi wlan1.servicce. Nicmene behem tohoto psledniho kroku sem jeste udelal zmenu v wpa_supplicant-wlan1.conf protoze sem tam mel u jedne z networks uvedeny nejaky popisek (zapomnel sem jak to presne bylo). Tohle je tedy potreba jeste poradne prozkoumat, neb rpobrat s vasikem...
+
 **To make it run you need to change these files:**
 
 1. /etc/wpa_supplicant-wlan1.conf
