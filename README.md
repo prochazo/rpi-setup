@@ -83,6 +83,8 @@ cd linux-setup
 - few packages must be installed 
   ``` sudo apt-get install toilet; sudo apt-get install rubygems ``` and maybe others which I forgot
 
+In the new version of the Linux setup, I had to comment out *python3-clang* in /appconfig/vim/install.sh
+
 ### Additional 
 - Temperature monitor 
 ``` 
