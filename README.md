@@ -1,5 +1,9 @@
 # rpi cheat-sheet
 
+## Backuping RPI's SD card
+- [https://raspberrypi.stackexchange.com/questions/311/how-do-i-backup-my-raspberry-pi](https://raspberrypi.stackexchange.com/questions/311/how-do-i-backup-my-raspberry-pi)
+- [https://github.com/framps/raspiBackup](https://github.com/framps/raspiBackup)
+
 ## Wireless Local Area Network
 
 ### Setup Wi-Fi to connect automatically
