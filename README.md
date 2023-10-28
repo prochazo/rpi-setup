@@ -99,6 +99,12 @@ sudo apt install lm-sensors
 - https://github.com/tatsu-lab/stanford_alpaca
 - https://github.com/cocktailpeanut/dalai
 
+## Home assistant
+- https://www.home-assistant.io/
+- I would like to run home assistant alongside the raspbian but it looks that it is not possible.
+
+
+
 ## Air Quality Monitor
 - https://www.hackster.io/david-gherghita/air-quality-monitor-using-raspberry-pi-4-sps30-and-azure-03cb42
 - https://www.laskakit.cz/senserion-sen55-sdn-t-opticky-senzor-kvality-ovzdusi/
