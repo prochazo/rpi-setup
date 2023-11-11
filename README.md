@@ -108,3 +108,11 @@ sudo apt install lm-sensors
 ## Air Quality Monitor
 - https://www.hackster.io/david-gherghita/air-quality-monitor-using-raspberry-pi-4-sps30-and-azure-03cb42
 - https://www.laskakit.cz/senserion-sen55-sdn-t-opticky-senzor-kvality-ovzdusi/
+
+
+# HACKATHON s Vaclavem
+- I created 
+
+docker ps
+docker compose up -d
+docker compose down
