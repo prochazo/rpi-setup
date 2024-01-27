@@ -21,6 +21,7 @@ curl -sSL https://get.docker.com | sh
 
 elif [[ $response =~ ^(n|N)=$ ]]
 then
+	echo " ..."
 	break
 else
 	echo " What? \"$resp\" is not a correct answer. Try y+Enter."

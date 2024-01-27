@@ -1,0 +1,3 @@
+$GIT_PATH/rpi/appconfig/shell/commons.sh_git, $GIT_PATH/rpi/appconfig/shell/commons.sh, \#\ %s
+$GIT_PATH/rpi/appconfig/bash/dotbashrc_git, $GIT_PATH/rpi/appconfig/bash/dotbashrc, \#\ %s
+$GIT_PATH/rpi/appconfig/ranger/rc.conf_git, $GIT_PATH/rpi/appconfig/ranger/rc.conf, \#\ %s

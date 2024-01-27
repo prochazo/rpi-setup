@@ -1,0 +1,9 @@
+[submodule "submodules/ranger"]
+	path = submodules/ranger
+	url = git@github.com:ranger/ranger.git
+[submodule "submodules/profile_manager"]
+	path = submodules/profile_manager
+	url = git@github.com:klaxalk/profile_manager.git
+[submodule "submodules/tmuxinator"]
+	path = submodules/tmuxinator
+	url = https://github.com/tmuxinator/tmuxinator.git
