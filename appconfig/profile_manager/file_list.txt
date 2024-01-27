@@ -2,3 +2,9 @@ $GIT_PATH/rpi/appconfig/tmux/dottmux.conf, ~/.tmux.conf, \#\ %s
 $GIT_PATH/rpi/appconfig/shell/commons.sh_git, $GIT_PATH/rpi/appconfig/shell/commons.sh, \#\ %s
 $GIT_PATH/rpi/appconfig/bash/dotbashrc_git, $GIT_PATH/rpi/appconfig/bash/dotbashrc, \#\ %s
 $GIT_PATH/rpi/appconfig/ranger/rc.conf_git, $GIT_PATH/rpi/appconfig/ranger/rc.conf, \#\ %s
+$GIT_PATH/rpi/appconfig/vim/dotvimrc, ~/.vimrc, \"\ %s
+$GIT_PATH/rpi/appconfig/vim/dotvim/pluginconfig/vimwiki_git.vim, $GIT_PATH/rpi/appconfig/vim/dotvim/pluginconfig/vimwiki.vim, \"\ %s
+$GIT_PATH/rpi/appconfig/vim/dotvim/pluginconfig/vim-clang-format_git.vim, $GIT_PATH/rpi/appconfig/vim/dotvim/pluginconfig/vim-clang-format.vim, \"\ %s
+$GIT_PATH/rpi/appconfig/vim/dotvim/pluginconfig/vim-startify_git.vim, $GIT_PATH/rpi/appconfig/vim/dotvim/pluginconfig/vim-startify.vim, \"\ %s
+$GIT_PATH/rpi/appconfig/vim/dotvim/UltiSnips/athame.snippets_git, $GIT_PATH/rpi/appconfig/vim/dotvim/UltiSnips/athame.snippets, \#\ %s
+$GIT_PATH/rpi/appconfig/vim/dotvim/UltiSnips/athame.snippets_git, $GIT_PATH/rpi/appconfig/vim/dotvim/UltiSnips/athame.snippets, \#\ %s

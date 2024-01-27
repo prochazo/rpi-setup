@@ -10,3 +10,9 @@
 [submodule "submodules/tmux"]
 	path = submodules/tmux
 	url = https://github.com/tmux/tmux.git
+[submodule "submodules/vim"]
+	path = submodules/vim
+	url = https://github.com/vim/vim.git
+[submodule "submodules/vim-plug"]
+	path = submodules/vim-plug
+	url = https://github.com/junegunn/vim-plug.git

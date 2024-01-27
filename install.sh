@@ -21,9 +21,6 @@ sudo apt-get -y install toilet ruby gem
 # python
 sudo apt-get -y install python3-dev python3-setuptools python3-pip
 
-# install vim
-sudo apt install vim
-
 #############################################
 # core installation
 #############################################
@@ -31,14 +28,17 @@ sudo apt install vim
 # install TMUX
 bash $APPCONFIG_PATH/tmux/install.sh $subinstall_params
 
+# install TMUXINATOR
+bash $APPCONFIG_PATH/tmuxinator/install.sh $subinstall_params
+
+# install VIM
+bash $APPCONFIG_PATH/vim/install.sh $subinstall_params
+
 # install RANGER
 bash $APPCONFIG_PATH/ranger/install.sh $subinstall_params
 
 # install DOCKER
 bash $APPCONFIG_PATH/docker/install.sh
-
-# install TMUXINATOR
-bash $APPCONFIG_PATH/tmuxinator/install.sh $subinstall_params
 
 #############################################
 # adding Locale variables to .bashrc

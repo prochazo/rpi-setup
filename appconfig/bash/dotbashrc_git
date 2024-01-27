@@ -15,8 +15,8 @@ fi
 #   export EDITOR="/usr/bin/vim --servername dog --cmd 'let g:user_mode=1'"
 # fi
 
-# export EDITOR="/usr/bin/vim --servername dog --cmd 'let g:user_mode=1'"
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/bin/vim --servername dog --cmd 'let g:user_mode=1'"
+# export EDITOR="/usr/bin/vim"
 
 # set the TMUX_BIN, prefer the user-compiled one
 [ -f /usr/local/bin/tmux ] && export TMUX_BIN=/usr/local/bin/tmux
