@@ -7,27 +7,29 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 # define paths
 APPCONFIG_PATH=$MY_PATH/appconfig
 
+arch=`uname -m`
 
-# install toilet
-sudo apt install toilet
+# install packages
+sudo apt-get -y update
 
-# install vim
-sudo apt install vim
+cd $MY_PATH
+git submodule update --init --recursive
+
+# essentials
+sudo apt-get -y install toilet ruby gem
 
 # python
 sudo apt-get -y install python3-dev python3-setuptools python3-pip
 
-# other stuff
-sudo apt-get -y install ruby gem
-
-# Clone Tom's linux setup package
-# cd ~/git
-# git clone https://github.com/klaxalk/linux-setup
-# cd linux setup
-# git submodule update --init --recursive --recommend-shallow
+# install vim
+sudo apt install vim
 
 # install TMUX
 sudo apt-get -y install tmux
+
+#############################################
+# core installation
+#############################################
 
 # install RANGER
 bash $APPCONFIG_PATH/ranger/install.sh $subinstall_params
@@ -38,16 +40,17 @@ bash $APPCONFIG_PATH/docker/install.sh
 # install TMUXINATOR
 bash $APPCONFIG_PATH/tmuxinator/install.sh $subinstall_params
 
-# Setup locale in bashrc
+#############################################
+# adding Locale variables to .bashrc
+#############################################
 line="export LC_ALL='en_GB.UTF-8'"
 num=`cat ~/.bashrc | grep "$line" | wc -l`
 if [ "$num" -lt "1" ]; then
 
-	echo "Adding '$line' to your .bashrc"
-
-	# set exports to .bashrc
-	echo "
-   	$line" >> ~/.bashrc
+  echo "Adding '$line' to your .bashrc"
+  # set exports to .bashrc
+  echo "
+  $line" >> ~/.bashrc
 fi
 	 
 #############################################
@@ -65,6 +68,14 @@ if [ "$num" -lt "1" ]; then
   echo "
 # path to the git root
 export GIT_PATH=$TEMP" >> ~/.bashrc
+fi
+
+#############################################
+# link the scripts folder
+#############################################
+
+if [ ! -e ~/.scripts ]; then
+  ln -sf $MY_PATH/scripts ~/.scripts
 fi
 
 #############################################
