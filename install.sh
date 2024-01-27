@@ -24,12 +24,12 @@ sudo apt-get -y install python3-dev python3-setuptools python3-pip
 # install vim
 sudo apt install vim
 
-# install TMUX
-sudo apt-get -y install tmux
-
 #############################################
 # core installation
 #############################################
+
+# install TMUX
+bash $APPCONFIG_PATH/tmux/install.sh $subinstall_params
 
 # install RANGER
 bash $APPCONFIG_PATH/ranger/install.sh $subinstall_params
