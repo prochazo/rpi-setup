@@ -2,7 +2,6 @@
 *.swp
 *.orig
 *.pyc
-*.po
 
 **/.nvimlog
 
