@@ -28,7 +28,7 @@ export SHELL=/bin/bash
 export CTAGS_FILE_ONCE="~/tags-once"
 
 # set vi mode in bash
-# set -o vi # EPIGEN_ADD_LINE_TOMAS
+set -o vi
 
 # create alisases
 alias sb="source ~/.bashrc"
@@ -40,7 +40,7 @@ case "$-" in
   *i*) INTERACTIVE_SHELL=1
 esac
 
-# fzf
+# fzf TODO:
 [ -f ~/.config/fzf/fzf.bash ] && source ~/.config/fzf/fzf.bash
 
 # running new tmux (or attaching) with session name derived from parent bash pid

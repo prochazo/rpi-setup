@@ -48,21 +48,9 @@ if g:user_mode == "1"
 
   Plug 'frazrepo/vim-rainbow'
 
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD {
   " Lean & mean status/tabline for vim that's light as air.
   Plug 'bling/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD }
-  " EPIGEN_ADD_BLOCK_VIKTOR_BIGBOX EPIGEN_ADD_BLOCK_VIKTOR_THINKPAD {
-  "" Lean & mean status/tabline for vim that's light as air.
-  "Plug 'itchyny/lightline.vim'
-
-  ""For saving files with sudo from normal vim
-  "Plug 'lambdalisue/suda.vim'
-
-  ""An essential component for my isolation mode - when the brain refuses to cooperate
-  "Plug 'junegunn/goyo.vim'
-  " EPIGEN_ADD_BLOCK_VIKTOR_BIGBOX EPIGEN_ADD_BLOCK_VIKTOR_THINKPAD }
 
   " For saving files with sudo from normal vim
   Plug 'lambdalisue/suda.vim'
@@ -100,39 +88,23 @@ if g:user_mode == "1"
   " currently mapped to F8
   Plug 'majutsushi/tagbar', { 'commit': 'a0f51bd' }
 
-  " EPIGEN_ADD_BLOCK_VIKTOR_BIGBOX {
-  " if has('nvim')
-  "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  "   Plug 'kiddos/deoplete-cpp'
-  "   Plug 'deoplete-plugins/deoplete-tag'
-
-  "   " Plug 'dense-analysis/ale'
-  "   Plug 'neomake/neomake'
-  " else
-  "   Plug 'Shougo/deoplete.nvim'
-  "   Plug 'roxma/nvim-yarp'
-  "   Plug 'roxma/vim-hug-neovim-rpc'
-  " endif
-  " let g:deoplete#enable_at_startup = 1
-  " EPIGEN_ADD_BLOCK_VIKTOR_BIGBOX }
-
   " youcompleteme
   " automatic code completion for C++ and more
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX {
-  Plug 'ycm-core/YouCompleteMe', { 'commit': '7c4d053', 'do': './install.py --clangd-completer' }
-  Plug 'rdnetto/YCM-Generator', { 'commit': '9cb722a' }
-  " enable airline YCM status
-  let g:airline#extensions#ycm#enabled = 1
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX }
+  " EPIGEN_ADD_BLOCK_CPP {
+"   Plug 'ycm-core/YouCompleteMe', { 'commit': '7c4d053', 'do': './install.py --clangd-completer' }
+"   Plug 'rdnetto/YCM-Generator', { 'commit': '9cb722a' }
+"   " enable airline YCM status
+"   let g:airline#extensions#ycm#enabled = 1
+  " EPIGEN_ADD_BLOCK_CPP }
 
   " make vim and ROS friends
-  Plug 'klaxalk/vim-ros'
+  " EPIGEN_ADD_BLOCK_ROS {
+"   Plug 'klaxalk/vim-ros'
+  " EPIGEN_ADD_BLOCK_ROS }
 
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD {
   " airline extension for tmux
   " it colors the tmuxes airline in same colors as in vim
   Plug 'edkolev/tmuxline.vim'
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD }
 
   " Latex stuff
   Plug 'lervag/vimtex'
@@ -194,7 +166,7 @@ if g:user_mode == "1"
   " <leader>cs
   Plug 'ron89/thesaurus_query.vim'
 
-  " EPIGEN_ADD_BLOCK_TOMAS EPIGEN_ADD_BLOCK_AFZAL {
+  " EPIGEN_ADD_BLOCK_ONDRA {
 
 "   " Grammar checking
 "   Plug 'rhysd/vim-grammarous'
@@ -215,7 +187,7 @@ if g:user_mode == "1"
 "   Plug 'biosugar0/singularity-vim'
 "   au BufRead *.def set ft=singularity
 
-  " EPIGEN_ADD_BLOCK_TOMAS EPIGEN_ADD_BLOCK_AFZAL }
+  " EPIGEN_ADD_BLOCK_ONDRA }
 
   " EPIGEN_ADD_BLOCK_DANIEL {
   " " Syntax-error highlighting
@@ -403,9 +375,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " remap tab navigations to shift + JK
-" EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD {
 nnoremap <S-J> :tabn<cr>
-" EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD }
 nnoremap <S-K> :tabp<cr>
 
 " allow the . to execute macro @a once for each line of a visual selection
@@ -534,12 +504,7 @@ if g:user_mode == "1"
   source ~/.vim/pluginconfig/vim-airline.vim
 
   " config for startify
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD {
   source ~/.vim/pluginconfig/vim-startify.vim
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD }
-  " EPIGEN_ADD_BLOCK_VIKTOR_BIGBOX EPIGEN_ADD_BLOCK_VIKTOR_THINKPAD {
-  " source ~/.vim/pluginconfig/vim-startify.vim
-  " EPIGEN_ADD_BLOCK_VIKTOR_BIGBOX EPIGEN_ADD_BLOCK_VIKTOR_THINKPAD }
 
   " config for nerdtree
   source ~/.vim/pluginconfig/nerdtree.vim
@@ -556,15 +521,8 @@ if g:user_mode == "1"
   " config for GoldenView
   source ~/.vim/pluginconfig/GoldenView.vim
 
-  " EPIGEN_ADD_BLOCK_VIKTOR_BIGBOX {
-  " source ~/.vim/pluginconfig/deoplete.vim
-  " source ~/.vim/pluginconfig/neomake.vim
-  " " source ~/.vim/pluginconfig/ale.vim
-  " EPIGEN_ADD_BLOCK_VIKTOR_BIGBOX }
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX {
   " config for youcompleteme
   source ~/.vim/pluginconfig/youcompleteme.vim
-  " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX }
 
   " config for vim-ros
   source ~/.vim/pluginconfig/vim-ros.vim
@@ -632,11 +590,6 @@ if g:user_mode == "0"
   nnoremap OB $a<down>
   nnoremap OC li<right>
   nnoremap OD i
-
-  " EPIGEN_ADD_BLOCK_MATOUS {
-  " nnoremap j j$
-  " nnoremap k k$
-  " EPIGEN_ADD_BLOCK_MATOUS }
 
 endif
 
