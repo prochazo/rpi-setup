@@ -29,7 +29,7 @@ let g:startify_bookmarks = [
 " the bottom part of the startify
 " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD {
 let g:startify_custom_footer =
-      \ ['', "   Pes štěká, kočka mňouká.", '']
+      \ ['', "   I swim in Vim like a dolphin in the ocean....", '']
 " EPIGEN_DEL_BLOCK_VIKTOR_BIGBOX EPIGEN_DEL_BLOCK_VIKTOR_THINKPAD }
 
 " EPIGEN_ADD_BLOCK_VIKTOR_BIGBOX EPIGEN_ADD_BLOCK_VIKTOR_THINKPAD {
