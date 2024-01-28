@@ -90,10 +90,10 @@ while true; do
     /usr/bin/vim -E -c "let g:user_mode=1" -c "so $APP_PATH/dotvimrc" -c "PlugInstall" -c "wqa" || echo "It normally returns >0"
 
     ####################################################################################
-    # YouCompleteMe
+    # YouCompleteMe TODO:
     ####################################################################################
 
-    default=y
+    default=n
     while true; do
       if [[ "$unattended" == "1" ]]
       then
