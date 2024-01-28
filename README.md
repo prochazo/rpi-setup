@@ -4,6 +4,20 @@
 | -------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Debian GNU/Linux 12  | arm64        |  **Passing**                                                                                                                                                     |
 
+## Story behind this project
+This project was derived mostly from the [linux-setup](https://github.com/klaxalk/linux-setup) (thanks to [Tomáš Báča](https://github.com/klaxalk)), which I started using and upgrading in [MRS Group](https://github.com/ctu-mrs). 
+After using the [linux-setup](https://github.com/klaxalk/linux-setup) for some time I realized that I do not understand the core of all setups, configs, plugins, etc. and therefore, I started reimplementing it mainly for RPi, where the whole [linux-setup](https://github.com/klaxalk/linux-setup) is overkill. 
+Moreover, I was having some issues installing it on arm64 architecture. 
+It is also possible that the [linux-setup](https://github.com/klaxalk/linux-setup) will be modified such it will be compatible with arm64 architecture because in MRS Group we are starting experimenting with [khadas](https://www.khadas.com/vim3).
+I did some cleanups, updates and I also focused on documentation.
+The work is still in progress!
+
+## Usage 
+The main purpose of this project is to setup your RPi's working environment, which is accessed only via ssh.
+
+Running the installation script (look at the end of README) will install everything you choose and which is included in this project.
+According to your choices the script will **DELETE** your current tmux, vim, etc. dotfiles.
+
 ## Core Submodules
 - [Profile manager](https://github.com/klaxalk/profile_manager) handles the automatic switching of profiles in config files based on a predefined set of keywords for which uses [epigen](https://github.com/klaxalk/epigen).
 - [tmux](https://github.com/tmux/tmux) is a terminal multiplexer.  It enables a number of terminals to be created, accessed, and controlled from a single screen. ...
@@ -30,7 +44,7 @@
 - **ranger** 
    * rc.conf*
  
-## Vim plugins
+## Vim plugins [klaxalk-wiki](https://github.com/klaxalk/linux-setup/wiki/vim)
 + [jellybeans.vim](https://github.com/nanotech/jellybeans.vim) a colorful, dark color scheme, inspired by ir_black and twilight.
 + [fugitive.vim](https://github.com/tpope/vim-fugitive) is the premier Vim plugin for Git. Or maybe it's the premier Git plugin for Vim? ...
 + [vim-dispatch](https://github.com/tpope/vim-dispatch)
