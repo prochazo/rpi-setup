@@ -83,7 +83,7 @@ gitUpdateSubmodules() {
 
 # #{ git()
 
-# upgrades the "git pull" to allow dotfiles profiling on rpi
+# upgrades the "git pull" to allow dotfiles profiling on rpi-setup
 # Other "git" features should not be changed
 git() {
 
@@ -108,12 +108,12 @@ git() {
       # we are in git repo subfolder
       if [[ "$?" == "0" ]]; then
 
-        # if we are in the 'rpi' repo, use the Profile manager
-        if [[ "$ROOT_DIR" == "$GIT_PATH/rpi" ]]; then
+        # if we are in the 'rpi-setup' repo, use the Profile manager
+        if [[ "$ROOT_DIR" == "$GIT_PATH/rpi-setup" ]]; then
 
-          PROFILE_MANAGER="$GIT_PATH/rpi/submodules/profile_manager/profile_manager.sh"
+          PROFILE_MANAGER="$GIT_PATH/rpi-setup/submodules/profile_manager/profile_manager.sh"
 
-          bash -c "$PROFILE_MANAGER backup $GIT_PATH/rpi/appconfig/profile_manager/file_list.txt"
+          bash -c "$PROFILE_MANAGER backup $GIT_PATH/rpi-setup/appconfig/profile_manager/file_list.txt"
 
           command git "$@"
 
@@ -126,7 +126,7 @@ git() {
           fi
 
           if [[ "$?" == "0" ]]; then
-            bash -c "$PROFILE_MANAGER deploy $GIT_PATH/rpi/appconfig/profile_manager/file_list.txt"
+            bash -c "$PROFILE_MANAGER deploy $GIT_PATH/rpi-setup/appconfig/profile_manager/file_list.txt"
           fi
 
         # this is generic git repo subfolder
