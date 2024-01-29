@@ -3,6 +3,7 @@
 | Ubuntu               | Architecture | Status                                                                                                                                                           |
 | -------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Debian GNU/Linux 12  | arm64        |  **Passing**                                                                                                                                                     |
+| 22.04 Jammy          | AMD64        |   [![Build Status](https://github.com/prochazo/rpi-setup/workflows/Jammy/badge.svg)](https://github.com/prochazo/rpi-setup/actions)                              |
 
 ## Story behind this project
 This project was derived mostly from the [linux-setup](https://github.com/klaxalk/linux-setup) (thanks to [Tomáš Báča](https://github.com/klaxalk)), which I started using and upgrading in [MRS Group](https://github.com/ctu-mrs). 
@@ -16,7 +17,8 @@ The work is still in progress!
 The main purpose of this project is to setup your RPi's working environment, which is accessed only via ssh.
 
 Running the installation script (look at the end of README) will install everything you choose and which is included in this project.
-According to your choices the script will **DELETE** your current tmux, vim, etc. dotfiles.
+
+**WARNING: The installation script (mainly deploy part) will DELETE your current tmux, vim, etc. dotfiles, if you are running this script for the first time.**
 
 ## Core Submodules
 - [Profile manager](https://github.com/klaxalk/profile_manager) handles the automatic switching of profiles in config files based on a predefined set of keywords for which uses [epigen](https://github.com/klaxalk/epigen).
