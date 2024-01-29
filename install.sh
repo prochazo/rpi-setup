@@ -9,6 +9,18 @@ APPCONFIG_PATH=$MY_PATH/appconfig
 
 arch=`uname -m`
 
+subinstall_params=""
+unattended=0
+for param in "$@"
+do
+  echo $param
+  if [ $param="--unattended" ]; then
+    echo "installing in unattended mode"
+    unattended=1
+    subinstall_params="--unattended"
+  fi
+done
+
 # install packages
 sudo apt-get -y update
 
@@ -38,11 +50,12 @@ bash $APPCONFIG_PATH/vim/install.sh $subinstall_params
 bash $APPCONFIG_PATH/ranger/install.sh $subinstall_params
 
 # install DOCKER
-bash $APPCONFIG_PATH/docker/install.sh
+bash $APPCONFIG_PATH/docker/install.sh $subinstall_params
 
 #############################################
 # adding Locale variables to .bashrc
 #############################################
+
 line="export LC_ALL='en_GB.UTF-8'"
 num=`cat ~/.bashrc | grep "$line" | wc -l`
 if [ "$num" -lt "1" ]; then
@@ -89,12 +102,12 @@ if [ "$num" -lt "1" ]; then
   echo '
 # list (space-separated) of profile names for customizing configs
 export PROFILES="COLORSCHEME_DARK"' >> ~/.bashrc
-
 fi
 
 #############################################
 # add sourcing of dotbashrd to .bashrc
 #############################################
+
 num=`cat ~/.bashrc | grep "dotbashrc" | wc -l`
 if [ "$num" -lt "1" ]; then
 
@@ -103,7 +116,6 @@ if [ "$num" -lt "1" ]; then
   echo "
 # sourcing RPi's linux setup
 source $APPCONFIG_PATH/bash/dotbashrc" >> ~/.bashrc
-
 fi
 
 # deploy configs by Profile manager

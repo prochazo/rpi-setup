@@ -5,6 +5,18 @@ set -e
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "$0: \"${last_command}\" command failed with exit code $?"' ERR
 
+unattended=0
+subinstall_params=""
+for param in "$@"
+do
+  echo $param
+  if [ $param="--unattended" ]; then
+    echo "installing in unattended mode"
+    unattended=1
+    subinstall_params="--unattended"
+  fi
+done
+
 default=n
 while true; do
   if [[ "$unattended" == "1" ]]
