@@ -52,6 +52,9 @@ bash $APPCONFIG_PATH/ranger/install.sh $subinstall_params
 # install DOCKER
 bash $APPCONFIG_PATH/docker/install.sh $subinstall_params
 
+# install MOTD
+bash $APPCONFIG_PATH/motd/install.sh $subinstall_params
+
 #############################################
 # adding Locale variables to .bashrc
 #############################################
