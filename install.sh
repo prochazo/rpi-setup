@@ -121,6 +121,9 @@ if [ "$num" -lt "1" ]; then
 source $APPCONFIG_PATH/bash/dotbashrc" >> ~/.bashrc
 fi
 
+# sourcing .bashr with added variables
+source ~/.bashrc
+
 # deploy configs by Profile manager
 ./deploy_configs.sh
 
