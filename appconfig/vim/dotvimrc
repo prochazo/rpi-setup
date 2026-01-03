@@ -184,6 +184,17 @@ if g:user_mode == "1"
 "   au BufRead *.def set ft=singularity
 
   " EPIGEN_ADD_BLOCK_ONDRA }
+  
+	" --- OSC 52 CLIPBOARD SHARING --- TODO
+  " Plug 'ojroques/vim-oscyank', {'branch': 'main'}
+  " let g:oscyank_trim       = 0  " trim surrounding whitespaces before copy
+	" function! RsyncOsc()
+			" if v:event.operator ==# 'y' && v:event.regname ==# ''
+					" OSCYankReg "
+			" endif
+	" endfunction
+	" autocmd TextYankPost * call RsyncOsc()
+  " Plug 'roxma/vim-tmux-clipboard'
 
   " EPIGEN_ADD_BLOCK_DANIEL {
   " " Syntax-error highlighting
@@ -234,7 +245,9 @@ Plug 'tommcdo/vim-exchange'
 
 call plug#end()
 
-set clipboard=unnamedplus     " shared clipboard with the system
+" set clipboard=unnamedplus     " shared clipboard with the system
+" set clipboard+=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 " some color stuff
 syntax enable
@@ -298,11 +311,26 @@ function! TogglePaste()
     set nopaste
   endif
 endfunc
-nnoremap <leader>p :call TogglePaste()<cr>
+nnoremap <leader>P :call TogglePaste()<cr>
+
+" --- FAKE SHARED CLIPBOARD ---
+"  Method 1
+" Copy selection to /tmp/vim_clipboard using Leader+y
+" vnoremap <leader>y y:call writefile(split(@", "\n", 1),'/tmp/vim_clipboard')<CR>
+" Paste from /tmp/vim_clipboard using Leader+p
+" nnoremap <leader>p :let @"=join(readfile('/tmp/vim_clipboard'), "\n")<CR>p
+"
+" Method 2
+" " Yank visual selection to tmux buffer
+" vnoremap <leader>y y:call system('tmux load-buffer -', getreg('"'))<CR>
+" " Yank current line to tmux buffer
+" nnoremap <leader>yy yy:call system('tmux load-buffer -', getreg('"'))<CR>
+" " Paste from tmux buffer
+" nnoremap <leader>p :call setreg('"', system('tmux save-buffer -'))<CR>p
 
 " default values for cursorlin and cursorcolumn
-set nocursorline
-set nocursorcolumn
+set cursorline
+set cursorcolumn
 
 " enable cursorlines
 function! EnableCursorLines()
@@ -650,3 +678,53 @@ nnoremap <leader>op :delmark a:norm ma*:%s//&_/g:norm `a:delmark a
 if !empty(glob("~/.my.vimrc"))
   source ~/.my.vimrc
 endif
+
+" " Use tmux as shared clipboard backend
+" if exists('$TMUX')
+
+"   " After every yank, push register to tmux
+"   augroup tmux_clipboard
+"     autocmd!
+"     autocmd TextYankPost * call s:tmux_yank()
+"   augroup END
+
+"   function! s:tmux_yank() abort
+"     if v:event.operator ==# 'y'
+"       call system('tmux load-buffer -', getreg('"'))
+"     endif
+"   endfunction
+
+"   " Paste from tmux buffer
+"   nnoremap p :call setreg('"', system('tmux save-buffer -'))<CR>p
+"   nnoremap P :call setreg('"', system('tmux save-buffer -'))<CR>P
+
+" endif
+
+if exists('$TMUX')
+
+  augroup tmux_clipboard
+    autocmd!
+    autocmd TextYankPost * call s:tmux_clipboard()
+  augroup END
+
+  function! s:tmux_clipboard() abort
+    " Operators that should update shared clipboard
+    if index(['y', 'd', 'c'], v:event.operator) < 0
+      return
+    endif
+
+    " Ignore black-hole register
+    if v:event.regname ==# '_'
+      return
+    endif
+
+    " Push unnamed register to tmux buffer
+    call system('tmux load-buffer -', getreg('"'))
+  endfunction
+
+  " Paste from tmux shared buffer
+  nnoremap p :call setreg('"', system('tmux save-buffer -'))<CR>p
+  nnoremap P :call setreg('"', system('tmux save-buffer -'))<CR>P
+
+endif
+
