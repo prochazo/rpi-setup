@@ -24,10 +24,6 @@ endif
 
 call plug#begin("~/.vim/plugged")
 
-" EPIGEN_ADD_BLOCK_TOMAS EPIGEN_ADD_BLOCK_DANIEL {
-" set viminfo='100,n$HOME/.vim/files/info/viminfo
-" EPIGEN_ADD_BLOCK_TOMAS EPIGEN_ADD_BLOCK_DANIEL }
-
 " which plugins should not be loaded outside of normal session (not in athame)
 if g:user_mode == "1"
 
@@ -625,8 +621,6 @@ if g:user_mode == "1"
   " customize bookmarks in startify
   let g:startify_bookmarks = [
         \ { 'b': '~/.bashrc' },
-        \ { 'i': '~/.i3/config' },
-        \ { 'p': '~/.config/papis/config' },
         \ { 'r': '~/.config/ranger/rc.conf' },
         \ { 't': '~/.tmux.conf' },
         \ { 'v': '~/.vimrc' },
