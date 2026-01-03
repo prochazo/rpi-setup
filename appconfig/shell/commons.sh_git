@@ -205,28 +205,6 @@ kill -9 "$1" > /dev/null 2> /dev/null
 
 # #}
 
-# #{ getVideoThumbnail()
-
-getVideoThumbnail() {
-
-  if [ $# -eq 0 ]; then
-    echo "did not get input"
-    exit 1
-  elif [ $# -eq 1 ]; then
-    echo "gettin the first frame"
-    file="$1"
-    frame="00:00:01"
-  elif [ $# -eq 2 ]; then
-    file="$1"
-    frame="$2"
-  fi
-
-  output="${file%.*}_thumbnail.jpg"
-  ffmpeg -i "$file" -ss "$frame" -vframes 1 "$output"
-}
-
-# #}
-
 # #{ sourceShellDotfile()
 
 getRcFile() {
@@ -363,49 +341,3 @@ quitTmuxSession() {
 # #}
 alias :qa="quitTmuxSession"
 
-# #{ catkin()
-
-catkin() {
-
-  case $* in
-
-    init*)
-
-      # give me the path to root of the repo we are in
-      ROOT_DIR=`git rev-parse --show-toplevel` 2> /dev/null
-
-      command catkin "$@"
-      command catkin config --profile debug --cmake-args -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17 -Og' -DCMAKE_C_FLAGS='-Og'
-      command catkin config --profile release --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17'
-      command catkin config --profile reldeb --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_CXX_FLAGS='-std=c++17'
-
-      command catkin profile set reldeb
-      ;;
-
-    build*|b|bt)
-
-      PACKAGES=$(catkin list)
-      if [ -z "$PACKAGES" ]; then
-        echo "Cannot compile, probably not in a workspace, or, your workspace lacks ROS packages. To initialize it, place your packages into 'src/' and call 'catkin init' or 'catkin build' again in the root of the workspace."
-      else
-
-      hostname=$( cat /etc/hostname )
-
-      # if [[ $hostname == uav* ]]; then
-      #   memlimit="--mem-limit 50%"
-      # else
-      #   memlimit=""
-      # fi
-
-      fi
-
-      ;;
-
-    *)
-      command catkin $@
-      ;;
-
-    esac
-  }
-
-# #}

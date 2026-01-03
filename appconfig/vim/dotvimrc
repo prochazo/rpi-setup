@@ -58,7 +58,7 @@ if g:user_mode == "1"
   " file manager (leader+n)
   Plug 'scrooloose/nerdtree'
 
-  " home screen (necessary to have a barking dog)
+  " home screen (necessary to have a chatty dolphin)
   Plug 'mhinz/vim-startify'
 
   " visualizing marks
