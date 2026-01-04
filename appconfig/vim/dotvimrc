@@ -665,27 +665,6 @@ if !empty(glob("~/.my.vimrc"))
   source ~/.my.vimrc
 endif
 
-" " Use tmux as shared clipboard backend
-" if exists('$TMUX')
-
-"   " After every yank, push register to tmux
-"   augroup tmux_clipboard
-"     autocmd!
-"     autocmd TextYankPost * call s:tmux_yank()
-"   augroup END
-
-"   function! s:tmux_yank() abort
-"     if v:event.operator ==# 'y'
-"       call system('tmux load-buffer -', getreg('"'))
-"     endif
-"   endfunction
-
-"   " Paste from tmux buffer
-"   nnoremap p :call setreg('"', system('tmux save-buffer -'))<CR>p
-"   nnoremap P :call setreg('"', system('tmux save-buffer -'))<CR>P
-
-" endif
-
 if exists('$TMUX')
 
   augroup tmux_clipboard

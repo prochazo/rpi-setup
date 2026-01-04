@@ -8,7 +8,7 @@ let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 
 " key bindings for normal use
 if g:user_mode == "1"
-  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsExpandTrigger="<c-j>"
   let g:UltiSnipsListSnippets="<c-l>"
   let g:UltiSnipsJumpForwardTrigger="<c-l>"
   let g:UltiSnipsJumpBackwardTrigger="<c-h>"
