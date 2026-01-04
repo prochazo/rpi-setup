@@ -21,10 +21,6 @@ do
   fi
 done
 
-var1="18.04"
-var2=`lsb_release -r | awk '{ print $2 }'`
-[ "$var2" = "$var1" ] && export BEAVER=1
-
 default=y
 while true; do
   if [[ "$unattended" == "1" ]]
@@ -41,10 +37,6 @@ while true; do
     toilet Setting up vim
 
     sudo apt-get -y remove vim-* || echo ""
-
-    if [ -n "$BEAVER" ]; then
-      sudo apt-get -y install libgnome2-dev libgnomeui-dev libbonoboui2-dev
-    fi
 
     sudo apt-get -y install libncurses5-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python3-dev clang-format
 
