@@ -13,7 +13,8 @@ Setting up a comfortable development environment on a headless Raspberry Pi usua
 ### Key Capabilities
 
 * ** Vim as a Full IDE**:
-* Pre-configured with **YouCompleteMe** (C++/Python code completion), **NERDTree** (file explorer), and **CtrlP** (fuzzy finder).
+* **Intelligent Completion**: Powered by **coc.nvim**, providing full Language Server Protocol (LSP) support (VS Code-like experience) for Python, C++, and more.  
+* **Essential Tools**: Pre-configured with **NERDTree** (file explorer) and **CtrlP** (fuzzy finder).
 * **Beautiful Themes**: unified `PaperColor` scheme across Vim and Tmux.
 
 
