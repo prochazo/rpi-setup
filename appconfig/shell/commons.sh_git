@@ -6,8 +6,21 @@ xset r rate 240 70 2> /dev/null
 
 export TERM=rxvt-unicode-256color
 
-export FZF_DEFAULT_OPTS='--height 25%'
+# export FZF_DEFAULT_OPTS='--height 25% --layout=reverse --info=inline'
 export FZF_DEFAULT_COMMAND='ag -l -f --nocolor -g ""'
+export FZF_DEFAULT_OPTS="
+  --height 40%
+  --layout=reverse
+  --border=rounded
+  --info=inline
+  --prompt='Search > '
+  --pointer='▌'
+  --marker='✓'
+	--color=fg:252,bg:234,hl:71
+  --color=fg+:16,bg+:103,hl+:231
+  --color=info:244,prompt:74,pointer:214
+  --color=marker:71,spinner:71,header:74
+"
 
 ## --------------------------------------------------------------
 ## |                general aliases and functions               |

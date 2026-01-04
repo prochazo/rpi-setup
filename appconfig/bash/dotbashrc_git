@@ -33,8 +33,9 @@ case "$-" in
   *i*) INTERACTIVE_SHELL=1
 esac
 
-# fzf TODO:
-[ -f ~/.config/fzf/fzf.bash ] && source ~/.config/fzf/fzf.bash
+# fzf
+# [ -f ~/.config/fzf/fzf.bash ] && source ~/.config/fzf/fzf.bash
+[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # running new tmux (or attaching) with session name derived from parent bash pid
 runTmux() {

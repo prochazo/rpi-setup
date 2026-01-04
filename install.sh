@@ -28,7 +28,7 @@ cd $MY_PATH
 git submodule update --init --recursive
 
 # essentials
-sudo apt-get -y install toilet ruby gem
+sudo apt-get -y install toilet ruby gem silversearcher-ag fzf
 
 # python
 sudo apt-get -y install python3-dev python3-setuptools python3-pip
