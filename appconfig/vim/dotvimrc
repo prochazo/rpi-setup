@@ -93,11 +93,6 @@ if g:user_mode == "1"
 "   let g:airline#extensions#ycm#enabled = 1
   " EPIGEN_ADD_BLOCK_CPP }
 
-  " make vim and ROS friends
-  " EPIGEN_ADD_BLOCK_ROS {
-"   Plug 'klaxalk/vim-ros'
-  " EPIGEN_ADD_BLOCK_ROS }
-
   " airline extension for tmux
   " it colors the tmuxes airline in same colors as in vim
   Plug 'edkolev/tmuxline.vim'
@@ -311,7 +306,7 @@ function! TogglePaste()
     set nopaste
   endif
 endfunc
-nnoremap <leader>P :call TogglePaste()<cr>
+nnoremap <leader>p :call TogglePaste()<cr>
 
 " --- FAKE SHARED CLIPBOARD ---
 "  Method 1
@@ -458,15 +453,9 @@ au FileType bib,yml,yaml,sh,conf,python set foldmarker=#\ #{,#\ #}
 au FileType cpp,c set foldmethod=marker
 au FileType cpp,c set foldmarker=//{,//}
 
-au FileType roslaunch.xml set foldmethod=marker
-au FileType roslaunch.xml set foldmarker=//{,//}
-
 au BufNewFile,BufRead *.sk setf sketch
 au FileType sk,sketch set foldmethod=marker
 au FileType sk,sketch set foldmarker=%\ %{,%\ %}
-
-au FileType xml,world,xacro set foldmethod=marker
-au FileType xml,world,xacro set foldmarker={-->,<!--}
 
 " find and replace
 map <Leader>fr :%s///g<left><left>
@@ -547,9 +536,6 @@ if g:user_mode == "1"
 
   " config for youcompleteme
   source ~/.vim/pluginconfig/youcompleteme.vim
-
-  " config for vim-ros
-  source ~/.vim/pluginconfig/vim-ros.vim
 
   " config for tmuxline
   source ~/.vim/pluginconfig/tmuxline.vim

@@ -134,9 +134,6 @@ while true; do
         git submodule update --init --recursive
         python3 ./install.py --clangd-completer
 
-        # link .ycm_extra_conf.py
-        ln -fs $APP_PATH/dotycm_extra_conf.py ~/.ycm_extra_conf.py
-
         break
       elif [[ $response =~ ^(n|N)=$ ]]
       then

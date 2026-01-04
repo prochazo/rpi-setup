@@ -15,7 +15,6 @@ let g:tmuxline_preset = {
     \'a'       : '#S',
     \'win'     : '#I #W',
     \'cwin'    : '#I #W',
-    \'x'       : '#(echo $ROS_MASTER_URI)',
     \'y'       : '%R',
     \'z'       : '#H',
     \'options' : {'status-justify' : 'left'}}

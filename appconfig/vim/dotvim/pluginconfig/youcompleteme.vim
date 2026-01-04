@@ -21,12 +21,6 @@ let g:ycm_clangd_args = ['--log=verbose', '--pretty', '--header-insertion=never'
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = '/usr/bin/clangd'
 
-" make ros and youcompleteme be friends
-let g:ycm_semantic_triggers = {
-\   'roslaunch' : ['="', '$(', '/'],
-\   'rosmsg,rossrv,rosaction' : ['re!^', '/'],
-\ }
-
 " will allow youcompleteme to work on vimwiki files
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
@@ -55,7 +49,6 @@ inoremap <expr> <C-k> ((pumvisible() && !empty(v:completed_item))?("\<C-p>"):("\
 
 let g:ycm_filepath_completion_use_working_dir = 1
 let g:ycm_global_ycm_extra_conf = '~/.vim/default_ycm_extra_conf.py'
-let g:ycm_extra_conf_globlist = ['~/'.$ROS_WORKSPACE.'/*']
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_collect_identifiers_from_tags_files = 1 "default 0
 

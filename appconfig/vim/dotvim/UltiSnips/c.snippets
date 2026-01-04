@@ -1,74 +1,3 @@
-global !p
-
-def file_is_plugin():
-	import re
-	fh = open(path)
-	for line in fh:
-		plugin_pattern = re.compile("^PLUGINLIB_EXPORT_CLASS.*$")
-		if plugin_pattern.match(line):
-			return True
-	return False
-
-def file_is_gazebo_plugin():
-	import re
-	fh = open(path)
-	for line in fh:
-		plugin_pattern = re.compile("^.*GAZEBO_VISIBLE.*$")
-		if plugin_pattern.match(line):
-			return True
-	return False
-
-def get_class_name():
-	import re
-	fh = open(path)
-	class_name = ""
-	for line in fh:
-		class_pattern = re.compile("^\s*class ")
-		if class_pattern.match(line):
-			class_name = line.split()[1]
-	return class_name
-	return ""
-
-def get_gazebo_plugin_class_name():
-	import re
-	fh = open(path)
-	class_name = ""
-	for line in fh:
-		class_pattern = re.compile("^\s*class ")
-		if class_pattern.match(line):
-			class_name = line.split()[2]
-	return class_name
-	return ""
-
-def ros_info():
-	text=""
-	if match.group(1) == "rinfo":
-		text="ROS_INFO"
-	elif match.group(1) == "rwarn":
-		text="ROS_WARN"
-	elif match.group(1) == "rerr":
-		text="ROS_ERROR"
-	if (match.group(2) == "s") or (match.group(3) == "s"):
-		text+="_STREAM"
-	if (match.group(2) == "t") or (match.group(3) == "t"):
-		text+="_THROTTLE"
-	if (match.group(2) == "o") or (match.group(3) == "o"):
-		text+="_ONCE"
-	return text
-
-def nodelet_info():
-	text=""
-	if match.group(1) == "ninfo":
-		text="NODELET_INFO"
-	elif match.group(1) == "nwarn":
-		text="NODELET_WARN"
-	elif match.group(1) == "nerr":
-		text="NODELET_ERROR"
-	if match.group(2) == "t":
-		text+="_THROTTLE"
-	return text
-
-endglobal
 
 snippet for
 for (int ${1:it} = ${2:0}; $1 < ${3}; $1++) {
@@ -154,98 +83,6 @@ snippet include
 #include <${1}>
 endsnippet
 
-snippet debuginfo
-ROS_INFO("Starting: ${1:pes}");
-{
-	${2:${VISUAL}}
-}
-ROS_INFO("Ending: $1");
-endsnippet
-
-snippet pubtry
-try {
-	${1:${VISUAL}}
-} catch (${3:...}) {
-	ROS_ERROR("Exception caught during publishing topic %s.", ${2}.getTopic().c_str());
-}
-endsnippet
-
-snippet try
-try {
-	${1:${VISUAL}}
-} catch (${2:...}) {
-	ROS_ERROR("Exception caught. ${3}");
-}
-endsnippet
-
-snippet catch
-catch (${1:...}) {
-	ROS_ERROR("Exception caught. ${2}");
-}
-endsnippet
-
-snippet saturate
-if (!std::isfinite(${1:${VISUAL}})) {
-	$1 = 0;
-	ROS_ERROR("NaN detected in variable \"$1\", setting it to 0 and returning!!!");
-	return;
-} else if ($1 > ${2}) {
-$1 = $2;
-} else if ($1 < -${3}) {
-$1 = -$3;
-}
-endsnippet
-
-snippet checknan
-if (!std::isfinite(${1:${VISUAL}})) {
-	ROS_ERROR("NaN detected in variable \"$1\"!!!");
-}
-endsnippet
-
-snippet "(rinfo|rwarn|rerr)(t|s|o)?(t|s)?" "" re
-`!p
-snip.rv=ros_info()+"("
-``!p
-if (match.group(2) == "t") or (match.group(3) == "t") :
-	snip.rv="1.0, "
-`"`!p
-is_plugin = file_is_plugin()
-is_gazebo_plugin = file_is_gazebo_plugin()
-if is_plugin:
-	snip.rv='['+get_class_name()+']'
-elif is_gazebo_plugin:
-	snip.rv='['+get_gazebo_plugin_class_name()+']'
-else:
-	snip.rv="[%s]"`: ${1}"`!p
-if not is_plugin and not is_gazebo_plugin:
-	snip.rv=", ros::this_node::getName().c_str()"``!p
-if "%" in t[1]:
-	snip.rv=", "
-else:
-	snip.rv=""
-`${3});
-endsnippet
-
-snippet "(ninfo|nwarn|nerr)(t)?" "" re
-`!p
-snip.rv=nodelet_info()+"("
-``!p
-if match.group(2) == "t":
-	snip.rv="1.0, "
-`"`!p
-if file_is_plugin():
-	snip.rv='['+get_class_name()+']'
-else:
-	snip.rv="[%s]"`: ${1}"`!p
-if not file_is_plugin():
-	snip.rv=", ros::this_node::getName().c_str()"``!p
-if "%" in t[1]:
-	snip.rv=", "
-else:
-	snip.rv=""
-`${3});
-endsnippet
-
 snippet "///" "" r
 // | `!p import math; snip.rv='-'*(30-(math.floor(len(t[1])/2.0))-2)` ${1} `!p import math; snip.rv='-'*(30-(math.ceil(len(t[1])/2.0))-2)` |
 endsnippet
@@ -302,46 +139,6 @@ ${1}
 };
 endsnippet
 
-snippet subscriber
-ros::Subscriber ${1}
-endsnippet
-
-snippet publisher
-ros::Publisher ${1}
-endsnippet
-
-snippet serviceserver
-ros::ServiceServer ${1}
-endsnippet
-
-snippet serviceclient
-ros::ServiceClient ${1}
-endsnippet
-
-snippet rosinit
-ros::init(argc, argv, "${1:node_name}");
-endsnippet
-
-snippet "rosok" "" ri
-ros::ok()
-endsnippet
-
-snippet "ros" "" ri
-ros::
-endsnippet
-
-snippet "spin" "" ri
-spin()
-endsnippet
-
-snippet "spinonce" "" ri
-spinOnce()
-endsnippet
-
-snippet "nodehandle" "" ri
-ros::NodeHandle("~")
-endsnippet
-
 snippet test
 `!p 
 import re
@@ -372,14 +169,6 @@ endsnippet
 
 snippet pow "" i
 pow(${1}, ${2:2})
-endsnippet
-
-snippet paramloader
-mrs_lib::ParamLoader param_loader(nh_, `!p
-if file_is_plugin():
-	snip.rv='"'+get_class_name()+'"'
-else:
-	snip.rv="ros::this_node::getName().c_str()"`);
 endsnippet
 
 snippet loadparam

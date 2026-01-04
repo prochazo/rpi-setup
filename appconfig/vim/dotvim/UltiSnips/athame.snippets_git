@@ -68,94 +68,6 @@ snippet "^gcom " "" Ar
 git commit -m "${1}"
 endsnippet
 
-snippet "^goto" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/goto "goal: [${2:0}, ${3:0}, ${4:1.5}, ${5:0.0}]"
-endsnippet
-
-snippet "^gofcu" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/goto_fcu "goal: [${2:0}, ${3:0}, ${4:0.0}, ${5:0.0}]"
-endsnippet
-
-snippet "^gorel" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/goto_relative "goal: [${3:0}, ${4:0}, ${5:0}, ${6:0}]"
-endsnippet
-
-snippet "^goal" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/goto_altitude ${2:3.0}
-endsnippet
-
-snippet "(^setyaw)|(^setheading)" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/set_heading "goal: ${2:0.0}"
-endsnippet
-
-snippet "^trackermpc" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/switch_tracker MpcTracker
-endsnippet
-
-snippet "^trackerflip" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/switch_tracker FlipTracker
-endsnippet
-
-snippet "^trackerspeed" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/switch_tracker SpeedTracker
-endsnippet
-
-snippet "^trackerline" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/switch_tracker LineTracker
-endsnippet
-
-snippet "^joystick" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/use_joystick
-endsnippet
-
-snippet "^hover" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/hover
-endsnippet
-
-snippet "^ehover" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/ehover
-endsnippet
-
-snippet "^motors" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/motors ${2:1}
-endsnippet
-
-snippet "^land" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/uav_manager/land
-endsnippet
-
-snippet "^eland" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/eland
-endsnippet
-
-snippet "^takeoff" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/uav_manager/takeoff
-endsnippet
-
-snippet "^nsf" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/switch_controller NsfController
-endsnippet
-
-snippet "^failsafe" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/failsafe_escalating
-endsnippet
-
-snippet "^flip" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/flip_tracker/flip
-endsnippet
-
-snippet "^(so3)|(se3)" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/switch_controller Se3Controller
-endsnippet
-
-snippet "^mpc" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/switch_controller MpcController
-endsnippet
-
-snippet "^attitude" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/switch_controller AttitudeController
-endsnippet
-
 snippet "^gppo" "" Ar
 git pull ${1:origin} ${2:`git branch | grep \* | sed 's/\* \([a-Z]*\)/\1/'`} && git push $1 $2
 endsnippet
@@ -230,23 +142,6 @@ endsnippet
 # }
 # endsnippet
 
-# snippet "^rostopic $" "" Ar
-# rostopic $1`!p
-# snip.rv=complete(t[1], ["echo", "list", "hz", "type"])`
-# endsnippet
-
-snippet "^cdsim" "" Ar
-cd ~/git/simulation/start_simulation/
-endsnippet
-
-snippet "^cdcore" "" Ar
-cd ~/mrs_workspace/src/uav_core/ros_nodes
-endsnippet
-
-snippet "^cdmodules" "" Ar
-cd ~/mrs_workspace/src/uav_modules/ros_nodes/
-endsnippet
-
 snippet "^glog" "" Ar
 git log --graph --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 endsnippet
@@ -277,27 +172,6 @@ endsnippet
 
 snippet "^(gcgppo)|(cggpo)" "" Ar
 git commit -m "${1:${VISUAL}}" ${2:-a} && git pull ${3:origin} ${4:`git branch | grep \* | sed 's/\* \([a-Z]*\)/\1/'`} && git push $3 $4
-endsnippet
-
-snippet "^call" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/
-endsnippet
-
-snippet "^setgains" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/gain_manager/set_gains ${2:soft}
-endsnippet
-
-snippet "^setconstraints" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/constraint_manager/set_constraints ${2:slow}
-endsnippet
-
-snippet "^fuse" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/odometry/change_odometry_source ${1}`!p
-snip.rv=complete(t[1], ["gps", "optflow", "rtk", "hector", "brick"])`
-endsnippet
-
-snippet "^headless" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/mpc_tracker/headless ${1:0}
 endsnippet
 
 snippet "^cbt" "" Ar
@@ -344,50 +218,7 @@ snippet "^papis edit " "" Ar
 papis edit '${1}'
 endsnippet
 
-snippet "^control" "" Ar
-roslaunch mrs_uav_manager simulation_f550_gps.launch
-endsnippet
-
-snippet "^arm" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/mavros/cmd/arming 1
-endsnippet
-
-snippet "^offboard" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/mavros/set_mode 0 offboard
-endsnippet
-
-snippet "^optflow" "" Ar
-roslaunch mrs_optic_flow simulation.launch
-endsnippet
-
-snippet "^rviz1" "" Ar
-roslaunch mrs_testing rviz_uav1.launch
-endsnippet
-
-snippet "^pirouette" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/pirouette
-endsnippet
-
-snippet "^simtime" "" Ar
-rosparam set use_sim_time true
-endsnippet
-
-snippet "^update" "" Ar
-sudo apt-get update && rosdep update && sudo apt-get upgrade --with-new-pkgs
-endsnippet
-
 snippet "^install" "" Ar
 sudo apt-get install
 endsnippet
 
-snippet "^garmin" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/odometry/toggle_garmin 0
-endsnippet
-
-snippet "^parachute" "" Ar
-rosservice call /uav${10:`~/.scripts/get_uav_number.sh`}/control_manager/parachute
-endsnippet
-
-snippet "^params" "" Ar
-vim <(rosrun mrs_uav_core get_public_params.py)
-endsnippet
